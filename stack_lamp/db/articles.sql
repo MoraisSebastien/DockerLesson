@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS test CHARACTER SET utf8;
-CREATE USER 'test'@'localhost' IDENTIFIED BY 'test';
+CREATE USER IF NOT EXISTS 'test'@'localhost' IDENTIFIED BY 'test';
 GRANT ALL PRIVILEGES ON test.* TO 'test'@'localhost';
 
 
