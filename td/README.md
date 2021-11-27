@@ -27,5 +27,7 @@ Un SSN est valide si :
 - il a le bon nombre de caractère
 - sa clef de contrôle est valide
 
+![SSN](https://user-images.githubusercontent.com/95085398/143722344-841fa617-5323-4c4d-a532-01c689d2d66a.jpeg)
+
 
 ![alt text](https://github.com/MoraisSebastien/DockerLesson/tree/tmp/readme/td/imgSSN.jpeg?raw=true)
