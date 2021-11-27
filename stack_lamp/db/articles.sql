@@ -1,8 +1,6 @@
-CREATE DATABASE IF NOT EXISTS test CHARACTER SET utf8;
+/*CREATE DATABASE IF NOT EXISTS test CHARACTER SET utf8;
 CREATE USER IF NOT EXISTS 'test'@'localhost' IDENTIFIED BY 'test';
-GRANT ALL PRIVILEGES ON test.* TO 'test'@'localhost';
-
-
+GRANT ALL PRIVILEGES ON test.* TO 'test'@'localhost';*/
 USE test;
 
 CREATE TABLE IF NOT EXISTS articles (
@@ -13,4 +11,3 @@ CREATE TABLE IF NOT EXISTS articles (
     content TEXT NULL,
     PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
