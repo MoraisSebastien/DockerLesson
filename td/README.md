@@ -45,7 +45,7 @@ docker network create mynet
 
 Commencez par lancer un premier conteneur basé sur l'image `mongo` que vous nommerez `mongodb` et que vous connecterez au réseau `mynet` (utilisez l'option `--network mynet`).
 Ensuite, lancez un second conteneur basé sur l'image `python:alpine` que vous nommerez `python-mongo` et que vous connecterez au réseau `mynet`.
-Afin d'éviter que le conteneur de l'image python ne se ferme automatiquement, il faudra utiliser le mode "foregroudn" (-t, -i ou -it).
+Afin d'éviter que le conteneur de l'image python ne se ferme automatiquement, il faudra utiliser le mode "foreground" (-t, -i ou -it).
 
 Dans le conteneur `python-mongo` installez la paquet `pymongo` que nous allons utiliser pour remplir la base de donnée.
 Utilisez l'interpréteur python du conteneur, pour peupler la base de données avec des informations (nom, prénom et SSNà en vous inspirant du code suivant :
@@ -77,11 +77,14 @@ print('Le fruit {} a bien ete cree'.format(res.inserted_id))
 col.find_one()
 ```
 
-En parallèle, assurez vous que la base de donnée à bien été remplie depuis le conteneur `mongo`.
-Pour cela, interagissez avec celui-ci en exécutant la commande `mongo`.
-Une fois réalisé, utilisez la base de donnée que vous défini depuis le conteneur python.
+En parallèle, assurez vous que la base de donnée à bien été remplie depuis le conteneur `mongodb`.
+Pour cela, interagissez avec celui-ci et exécutez la commande `mongo`.
+Ensuite, utilisez la base de donnée que vous défini précédemennet (dans le conteneur python).
+
 `use NOM_BASE_DE_DONNEES`
-Ensuite, interoggez la base pour récupérer un élément qui compose la collection que vous avec définit.
+
+Enfin, interoggez la base pour récupérer un élément qui compose la collection que vous avez définit.
+
 `db.NOM_COLLECTION.findOne()`
 
 # Exercice 3 - Créons un script Python peuplant la base de donnée et faisons en une image Docker
@@ -125,9 +128,13 @@ Votre fichier `docker-compose.yml` va se composer de trois services :
 **Note** : dans le cas du conteneur `mongodb`, n'oubliez pas que le service `mongod` utilise le port 27017.
 
 Vérifiez ensuite que tout cela fonctionne :
+
 `docker-compose up --build`
+
 et, depuis un autre terminal
+
 `docker exec -it NOM_DU_CONTENEUR bash`
+
 et enfin l'exécution de votre code python réalisant le traitement sur la base de donnée.
 
 # Exercice 6 - Extra 
