@@ -29,10 +29,10 @@ Un SSN est valide si :
 - il a le bon nombre de caractère
 - sa clef de contrôle est valide
 
+**Indication** : il serait bon d'avoir un ensemble de tests pour valider les différents cas d'utilisations
+
 Image wikipedia:
 ![SSN](https://user-images.githubusercontent.com/95085398/143722344-841fa617-5323-4c4d-a532-01c689d2d66a.jpeg)
-
-Indication : il serait bon d'avoir un ensemble de tests pour valider les différents cas d'utilisations
 
 # Exercice 2 - Utilisons Docker pour peupler une base de donnée MongoDB avec un code Python
 
@@ -105,7 +105,7 @@ Ecrivez un script Python `ssn_checker.py` basé sur vos développement à l'Exer
 Lorsque celui-ci est appelé, il doit se connecter à la base de données et regarder que les SSN sont valides.
 Dans le cas où un SSN n'est pas valide, il doit afficher à l'écran le nom, prénom et SNN de la personne.
 
-Note : pour itérer sur une collection obtenus via `pymongo`, vous pouvez utiliser le snippet suivant:
+**Note** : pour itérer sur une collection obtenus via `pymongo`, vous pouvez utiliser le snippet suivant:
 
 ```python
 fruits = col.find()
@@ -122,7 +122,7 @@ Votre fichier `docker-compose.yml` va se composer de trois services :
 - `mongodb` : que vous allez lancer à partir de l'image `mongo:latest` et qui dépendra de ssn_checker
 - `seed_mongo` :  que vous allez lancer à partir de votre image `$DOCKERID/seed_mongo` (ou de celle d'un de vos camarades) et qui dépendra de `mongodb`
 
-Note : dans le cas du conteneur `mongodb`, n'oubliez pas que le service `mongod` utilise le port 27017.
+**Note** : dans le cas du conteneur `mongodb`, n'oubliez pas que le service `mongod` utilise le port 27017.
 
 Vérifiez ensuite que tout cela fonctionne :
 `docker-compose up --build`
@@ -130,14 +130,14 @@ et, depuis un autre terminal
 `docker exec -it NOM_DU_CONTENEUR bash`
 et enfin l'exécution de votre code python réalisant le traitement sur la base de donnée.
 
-# Exercice 6 - Bonus 
+# Exercice 6 - Extra 
 
 Modifiez `ssn_checker` pour en faire une interface en ligne de commande (CLI).
 Pour commencer vous pouvez recouvrir vos développements existant, i.e. ajouter une option "--check" permettant de regarder si des personnes ont des SSN invalides.
 Ensuite vous pouvez proposer d'autres options :
-- afficher les informations relatives à une personne à partir de son SSN (genre, age, ...)
-- rechercher les personnes ayant une certain nom, prénom, genre, ...
-- supprimer les personnes au SSN invalide dans la base de données
+- afficher les informations relatives à une personne à partir de son SSN (genre, age, ...) "--info"
+- rechercher les personnes ayant une certain nom, prénom, genre, ... "--search-name", "--search-gender", ...
+- supprimer les personnes au SSN invalide dans la base de données "--rm-invalid-ssn"
 - ...
 
 
